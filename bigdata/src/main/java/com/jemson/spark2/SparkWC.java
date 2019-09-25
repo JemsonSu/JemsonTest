@@ -19,13 +19,15 @@ public class SparkWC {
     public static void main(String[] args) {
         System.out.println("spark2.4.4 wordcount 测试");
 
-        String logFile = "./bigdata/a.txt";
+        //String logFile = "./bigdata/a.txt";
+        String logFile = args[0];
+        System.out.println("计算文件:"+logFile);
 
         SparkSession.Builder builder = SparkSession.builder();
-        builder.appName("spark2.X wordcount");
-        builder.master("local");
+        //builder.appName("spark2.4.4 wordcount");
+        //builder.master("yarn");
         SparkSession sparkSession = builder.getOrCreate();
-        sparkSession.sparkContext().setLogLevel("ERROR"); //只输出ERROR级别日志
+        //sparkSession.sparkContext().setLogLevel("ERROR"); //只输出ERROR级别日志
 
         DataFrameReader read = sparkSession.read();
 
